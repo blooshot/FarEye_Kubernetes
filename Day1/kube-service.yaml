@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: podu-service
+spec:
+  selector:
+    app: podu  # Selects pods with label 'app: podu'
+  ports:
+  - protocol: TCP
+    name: http  # Descriptive name for the service port
+    port: 80   # External port for accessing the service
+    targetPort: 3000  # Port on the pod to forward traffic to
+  type: NodePort  # Service will be accessible through a NodePort
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: podu-service
+# spec:
+#   selector: # specifies the labels that the Service will route traffic to
+#     app: podu # this should match labels of your pods
+#     ports:
+#       - protocols: TCP
+#         port: 80 # Port on the service through which it will be accessible
+#         targetPort: 3000 # Port on the pod where the service traffic will be forwarded
+#   type: NodePort #Specify the type of service
